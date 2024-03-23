@@ -1,0 +1,86 @@
+/* CSS styles for the Contact Page */
+
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  /* Global styles */
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    color: #333;
+  }
+  
+  header {
+    background-color: #007bff;
+    padding: 10px;
+  }
+  
+  main {
+    margin: 50px auto;
+    max-width: 600px;
+    text-align: center;
+  }
+  
+  .contact-section {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .email-template form {
+    text-align: left;
+  }
+  
+  .email-template label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .email-template input,
+  .email-template textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  
+  .email-template textarea {
+    resize: vertical;
+  }
+  
+  .email-template input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .email-template input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  
+  .contact-info {
+    margin-top: 30px;
+  }
+  
+  .contact-info h3 {
+    margin-bottom: 10px;
+  }
+  
+  .contact-info p {
+    font-size: 16px;
+  }
+  

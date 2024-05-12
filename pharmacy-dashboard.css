@@ -1,0 +1,9 @@
+/* styles.css */
+
+.container {
+    max-width: 800px;
+}
+
+.add-medicine-form {
+    display: none;
+}

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Pharmacy Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="pharmacy-dashboard.css">
+</head>
+<body>
+    <div class="container mx-auto p-4">
+        <h1 class="text-center mb-4">Pharmacy Dashboard</h1>
+        <button id="addMedicineBtn" class="btn btn-primary mb-3">Add Medicine</button>
+        <ul id="medicineList" class="list-group"></ul>
+        <div id="addMedicineForm" class="add-medicine-form">
+            <h2 class="text-center mb-4">Add Medicine</h2>
+            <div class="mb-3">
+                <label for="medicineName" class="form-label">Medicine Name</label>
+                <input type="text" id="medicineName" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="manufactureDate" class="form-label">Manufacture Date</label>
+                <input type="date" id="manufactureDate" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="expiryDate" class="form-label">Expiry Date</label>
+                <input type="date" id="expiryDate" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="price" class="form-label">Price</label>
+                <input type="number" id="price" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="details" class="form-label">Medicine Details</label>
+                <textarea id="details" class="form-control"></textarea>
+            </div>
+            <button id="saveMedicineBtn" class="btn btn-success">Save</button>
+        </div>
+    </div>
+
+    <script>
+        var medicineList = [];
+        var addMedicineBtn = document.getElementById('addMedicineBtn');
+        var addMedicineForm = document.getElementById('addMedicineForm');
+        var saveMedicineBtn = document.getElementById('saveMedicineBtn');
+        var medicineNameInput = document.getElementById('medicineName');
+        var manufactureDateInput = document.getElementById('manufactureDate');
+        var expiryDateInput = document.getElementById('expiryDate');
+        var priceInput = document.getElementById('price');
+        var detailsInput = document.getElementById('details');
+        var medicineListContainer = document.getElementById('medicineList');
+
+        function toggleAddMedicineForm() {
+            addMedicineForm.style.display = addMedicineForm.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function addMedicine() {
+            var medicine = {
+                name: medicineNameInput.value,
+                manufactureDate: manufactureDateInput.value,
+                expiryDate: expiryDateInput.value,
+                price: priceInput.value,
+                details: detailsInput.value
+            };
+
+            medicineList.unshift(medicine);
+            renderMedicineList();
+            toggleAddMedicineForm();
+            clearForm();
+        }
+
+        function removeMedicine(index) {
+            medicineList.splice(index, 1);
+            renderMedicineList();
+        }
+
+        function renderMedicineList() {
+            medicineListContainer.innerHTML = '';
+            for (var i = 0; i < medicineList.length; i++) {
+                var medicine = medicineList[i];
+                var listItem = document.createElement('li');
+                listItem.classList.add('list-group-item');
+
+                var detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('medicine-details');
+
+                var nameDiv = document.createElement('div');
+                nameDiv.classList.add('medicine-name');
+                nameDiv.innerText = medicine.name;
+                detailsDiv.appendChild(nameDiv);
+
+                var manufactureDiv = document.createElement('div');
+                manufactureDiv.classList.add('medicine-manufacture');
+                manufactureDiv.innerText = 'Manufacture Date: ' + medicine.manufactureDate;
+                detailsDiv.appendChild(manufactureDiv);
+
+                var expiryDiv = document.createElement('div');
+                expiryDiv.classList.add('medicine-expiry');
+                expiryDiv.innerText = 'Expiry Date: ' + medicine.expiryDate;
+                detailsDiv.appendChild(expiryDiv);
+
+                listItem.appendChild(detailsDiv);
+
+                var priceDiv = document.createElement('div');
+                priceDiv.classList.add('medicine-price');
+                priceDiv.innerText = 'Price: $' + medicine.price;
+                listItem.appendChild(priceDiv);
+
+                var removeButton = document.createElement('button');
+                removeButton.innerText = 'Remove';
+                removeButton.classList.add('btn', 'btn-danger', 'float-end');
+                removeButton.dataset.index = i;
+                removeButton.addEventListener('click', function() {
+                    removeMedicine(this.dataset.index);
+                });
+                listItem.appendChild(removeButton);
+
+                medicineListContainer.appendChild(listItem);
+            }
+        }
+
+        function clearForm() {
+            medicineNameInput.value = '';
+            manufactureDateInput.value = '';
+            expiryDateInput.value = '';
+            priceInput.value = '';
+            detailsInput.value = '';
+        }
+
+        addMedicineBtn.addEventListener('click', toggleAddMedicineForm);
+        saveMedicineBtn.addEventListener('click', addMedicine);
+    </script>
+</body>
+</html>

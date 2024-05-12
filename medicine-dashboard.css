@@ -1,0 +1,17 @@
+body {
+    background: linear-gradient(to bottom, #4F46E5, #B040F7);
+    color: #FFF;
+    padding: 20px;
+}
+
+h1, h2 {
+    margin-bottom: 20px;
+}
+
+table {
+    margin-bottom: 20px;
+}
+
+button {
+    margin-top: 10px;
+}

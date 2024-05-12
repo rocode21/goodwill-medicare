@@ -1,0 +1,61 @@
+body {
+    background-image: url("https://example.com/background-image.jpg"); /* Replace with your own image URL */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+  }
+  
+  .dashboard-section {
+    background: linear-gradient(to bottom right, #FF857F, #FFB997);
+    border-radius: 10px;
+    padding: 20px;
+    color: #fff;
+  }
+  
+  .table {
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+  }
+  
+  .add-department-form {
+    margin-top: 20px;
+  }
+  
+  .btn-primary {
+    background-image: linear-gradient(to bottom right, #66D6FF, #33CCFF);
+    border: none;
+  }
+  
+  .btn-primary:hover {
+    background-image: linear-gradient(to bottom right, #33CCFF, #0099FF);
+    border: none;
+  }
+  
+  .btn-danger {
+    background-image: linear-gradient(to bottom right, #FF6961, #FF4433);
+    border: none;
+  }
+  
+  .btn-danger:hover {
+    background-image: linear-gradient(to bottom right, #FF4433, #FF0000);
+    border: none;
+  }
+  
+  .modal-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+  }
+  
+  .modal-header {
+    background-color: #66D6FF;
+    color: #fff;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .modal-footer {
+    background-color: #F5F5F5;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+  }
+  

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Department Dashboard</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="department-dashboard.css">
+</head>
+<body>
+  <div class="container">
+    <h1 class="title">Department Dashboard</h1>
+    <form id="add-doctor-form" class="mb-3">
+      <div class="form-row">
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Name" id="doctor-name" required>
+        </div>
+        <div class="col">
+          <input type="number" class="form-control" placeholder="Age" id="doctor-age" required>
+        </div>
+        <div class="col">
+          <input type="number" step="0.1" class="form-control" placeholder="Rating" id="doctor-rating" required>
+        </div>
+        <div class="col">
+          <input type="text" class="form-control" placeholder="Specialty" id="doctor-specialty" required>
+        </div>
+        <div class="col">
+          <button type="submit" class="btn btn-primary btn-sm">Add Doctor</button>
+        </div>
+      </div>
+    </form>
+    <div class="doctors-grid">
+      <div class="doctor-card animate__animated animate__fadeIn">
+        <div class="doctor-info">
+          <span class="doctor-name">Dr. John Doe</span>
+          <span class="doctor-age">35</span>
+          <span class="doctor-rating">4.8</span>
+          <span class="doctor-specialty">Cardiology</span>
+        </div>
+        <button class="btn btn-danger btn-sm remove-doctor">Remove</button>
+      </div>
+      <div class="doctor-card animate__animated animate__fadeIn">
+        <div class="doctor-info">
+          <span class="doctor-name">Dr. Jane Smith</span>
+          <span class="doctor-age">42</span>
+          <span class="doctor-rating">4.5</span>
+          <span class="doctor-specialty">Dermatology</span>
+        </div>
+        <button class="btn btn-danger btn-sm remove-doctor">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      // Remove doctor button click event
+      $(document).on('click', '.remove-doctor', function() {
+        $(this).closest('.doctor-card').remove();
+      });
+
+      // Add doctor form submit event
+      $('#add-doctor-form').submit(function(event) {
+        event.preventDefault();
+        const name = $('#doctor-name').val();
+        const age = $('#doctor-age').val();
+        const rating = $('#doctor-rating').val();
+        const specialty = $('#doctor-specialty').val();
+
+        const newCard = `
+          <div class="doctor-card animate__animated animate__fadeIn">
+            <div class="doctor-info">
+              <span class="doctor-name">${name}</span>
+              <span class="doctor-age">${age}</span>
+              <span class="doctor-rating">${rating}</span>
+              <span class="doctor-specialty">${specialty}</span>
+            </div>
+            <button class="btn btn-danger btn-sm remove-doctor">Remove</button>
+          </div>
+        `;
+        $('.doctors-grid').append(newCard);
+
+        $('#doctor-name').val('');
+        $('#doctor-age').val('');
+        $('#doctor-rating').val('');
+        $('#doctor-specialty').val('');
+      });
+    });
+  </script>
+</body>
+</html>

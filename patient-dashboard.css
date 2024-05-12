@@ -1,0 +1,143 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f7f7;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    padding: 20px;
+    background-color: #ff3366;
+    color: #fff;
+    text-align: center;
+    background-image: linear-gradient(to bottom, #ff3366, #e60073);
+  }
+  
+  .side-nav {
+    min-height: 100vh;
+    padding-top: 20px;
+    background-color: #292929;
+    color: #fff;
+    background-image: linear-gradient(to bottom, #292929, #111111);
+  }
+  
+  .side-nav ul {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .side-nav a {
+    display: block;
+    padding: 10px 20px;
+    margin-bottom: 10px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    background-image: linear-gradient(to right, #fc9d03, #f24405);
+  }
+  
+  .side-nav a:nth-child(2n) {
+    background-image: linear-gradient(to right, #19a7a7, #3cd3ad);
+  }
+  
+  .side-nav a:nth-child(3n) {
+    background-image: linear-gradient(to right, #ff6677, #ff00a3);
+  }
+  
+  .side-nav a:hover {
+    background-image: linear-gradient(to right, #ffc400, #ffab00);
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .doctor-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  .doctor-item {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background-image: linear-gradient(to bottom, #fff, #f7f7f7);
+  }
+  
+  .doctor-item h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+  }
+  
+  .doctor-item p {
+    margin: 0;
+  }
+  
+  .virtual-appointment-button {
+    margin-top: 10px;
+    background-color: #ff3366;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-image: linear-gradient(to right, #ff3366, #ff33a6);
+  }
+  
+  .virtual-appointment-button:hover {
+    background-image: linear-gradient(to right, #ff33a6, #ff3366);
+  }
+  
+  .user-settings a,
+  .notifications a {
+    color: #fff;
+    font-size: 20px;
+  }
+  
+  .user-settings a:hover,
+  .notifications a:hover {
+    color: #ccc;
+  }
+  
+/* Emergency Appointment Popup Styles */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.popup-content {
+  position: relative;
+  margin: 100px auto;
+  padding: 20px;
+  width: 300px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.popup h2 {
+  margin-top: 0;
+}
+
+.popup form {
+  margin-top: 20px;
+}
+
+.popup .form-group {
+  margin-bottom: 20px;
+}
+
+.popup button[type="submit"] {
+  width: 100%;
+}

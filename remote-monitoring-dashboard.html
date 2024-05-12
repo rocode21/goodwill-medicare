@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Remote Monitoring Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Remote Monitoring Dashboard</h1>
+    <div id="charts-container"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var chartsContainer = document.getElementById('charts-container');
+
+      // Simulate real-time data
+      var heartRateSeries = generateRandomSeries(60, 60, 50, 200);
+      var bloodPressureSeries = generateRandomSeries(60, 60, 70, 200);
+
+      var options = {
+        series: [
+          { name: 'Heart Rate (BPM)', data: heartRateSeries },
+          { name: 'Blood Pressure (mmHg)', data: bloodPressureSeries }
+        ],
+        chart: { type: 'line', height: 350 },
+        xaxis: { type: 'datetime' },
+        yaxis: { title: { text: 'Measurements' } },
+        stroke: { width: 2 },
+        legend: { position: 'top' },
+      };
+
+      var chart = new ApexCharts(chartsContainer, options);
+      chart.render();
+
+      // Simulate real-time updates
+      setInterval(function() {
+        heartRateSeries.shift();
+        bloodPressureSeries.shift();
+        var heartRate = generateRandomValue(60, 200);
+        var bloodPressure = generateRandomValue(70, 200);
+        var timestamp = new Date().getTime();
+        heartRateSeries.push({ x: timestamp, y: heartRate });
+        bloodPressureSeries.push({ x: timestamp, y: bloodPressure });
+        chart.updateSeries([{ data: heartRateSeries }, { data: bloodPressureSeries }]);
+      }, 2000);
+    });
+
+    // Generate random value between min and max
+    function generateRandomValue(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    // Generate random series of values
+    function generateRandomSeries(numPoints, interval, min, max) {
+      var series = [];
+      var currentTime = new Date().getTime();
+
+      for (var i = numPoints - 1; i >= 0; i--) {
+        var timestamp = currentTime - (i * interval * 1000);
+        var value = generateRandomValue(min, max);
+        series.push({ x: timestamp, y: value });
+      }
+
+      return series;
+    }
+  </script>
+</body>
+</html>

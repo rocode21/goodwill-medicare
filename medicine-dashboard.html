@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medicine Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.7/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="medicine-dashboard.css" rel="stylesheet">
+</head>
+<body>
+    <h1>Medicine Dashboard</h1>
+
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Medicine Name</th>
+                <th scope="col">Expiry Date</th>
+                <th scope="col">View Details</th>
+                <th scope="col">Price</th>
+                <th scope="col">Pharmacy Name</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Painkiller</td>
+                <td>2024-06-01</td>
+                <td><a href="#">View</a></td>
+                <td>$10</td>
+                <td>ronnu pharma</td>
+                <td><button onclick="buyMedicine('Medicine 1')" class="btn btn-primary">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Adderall</td>
+                <td>2023-12-31</td>
+                <td><a href="#">View</a></td>
+                <td>$15</td>
+                <td>rohan lal pharma</td>
+                <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Flexon</td>
+                <td>2023-12-31</td>
+                <td><a href="#">View</a></td>
+                <td>$12</td>
+                <td>saugat international hospital</td>
+                <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Azithromycin</td>
+                <td>2023-10-31</td>
+                <td><a href="#">View</a></td>
+                <td>$14</td>
+                <td>wong clinic</td>
+                <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
+            </tr>
+            <tr>
+                <td>Emetrol</td>
+                <td>2023-10-31</td>
+                <td><a href="#">View</a></td>
+                <td>$14</td>
+                <td>manoj healthcare's</td>
+                <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
+            </tr>
+            <!-- Add more medicine rows here -->
+        </tbody>
+    </table>
+
+    <h2>Shopping Cart</h2>
+    <ul id="cartItems"></ul>
+    <button onclick="buyCart()" class="btn btn-success">Buy Cart</button>
+
+    <script>
+        var cartItems = [];
+
+        function buyMedicine(medicineName) {
+            cartItems.push({
+                name: medicineName,
+                price: getPriceForMedicine(medicineName)
+            });
+
+            displayCartItems();
+        }
+
+        function getPriceForMedicine(medicineName) {
+            if (medicineName === 'Medicine 1') {
+                return 10;
+            } else if (medicineName === 'Medicine 2') {
+                return 15;
+            } else {
+                return 0;
+            }
+        }
+
+        function displayCartItems() {
+            var cartList = document.getElementById('cartItems');
+            cartList.innerHTML = '';
+
+            var totalPrice = 0;
+
+            for (var i = 0; i < cartItems.length; i++) {
+                var listItem = document.createElement('li');
+                listItem.textContent = cartItems[i].name;
+
+                var removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.className = 'btn btn-danger btn-sm ml-2';
+                removeButton.setAttribute('data-index', i);
+                removeButton.addEventListener('click', removeItemFromCart);
+
+                listItem.appendChild(removeButton);
+                cartList.appendChild(listItem);
+
+                totalPrice += cartItems[i].price;
+            }
+
+            var totalElement = document.createElement('li');
+            totalElement.textContent = 'Total Price: $' + totalPrice;
+            cartList.appendChild(totalElement);
+        }
+
+        function removeItemFromCart(event) {
+            var index = event.target.getAttribute('data-index');
+            cartItems.splice(index, 1);
+            displayCartItems();
+        }
+
+        function buyCart() {
+    var totalPrice = 0;
+
+    for (var i = 0; i < cartItems.length; i++) {
+        totalPrice += cartItems[i].price;
+    }
+
+    var popup = window.open('', 'Payment', 'width=400,height=400');
+    popup.document.write('<h2>Total Price: $' + totalPrice + '</h2>');
+    popup.document.write('<form>');
+    popup.document.write('Card Number: <input type="text" name="cardNumber"><br>');
+    popup.document.write('Expiration Date: <input type="text" name="expirationDate"><br>');
+    popup.document.write('CVV: <input type="text" name="cvv"><br>');
+    popup.document.write('Location: <input type="text" name="location"><br>');
+    popup.document.write('Contact Number: <input type="text" name="contactNumber"><br>');
+    popup.document.write('<input type="submit" value="Submit">');
+    popup.document.write('</form>');
+
+    popup.document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var location = popup.document.querySelector('input[name="location"]').value;
+        var contactNumber = popup.document.querySelector('input[name="contactNumber"]').value;
+        alert('Payment successful!\n\nDelivery Location: ' + location + '\nContact Number: ' + contactNumber);
+        popup.close();
+    });
+}
+
+    </script>
+</body>
+</html>

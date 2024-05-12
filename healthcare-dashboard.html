@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Healthcare Dashboard</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="healthcare-dashboard.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <ul class="navbar">
+        <li><a href="department-dashboard.html">Add Doctors and view Department</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="dashboard" class="dashboard-section">
+      <h2>Welcome to the Healthcare Dashboard</h2>
+      <table class="table departments-table">
+        <thead>
+          <tr>
+            <th>Department</th>
+            <th>Specialties</th>
+            <th>No. of Doctors</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Cardiology</td>
+            <td>Heart diseases</td>
+            <td>5</td>
+            <td>
+              <button class="btn btn-danger" data-toggle="modal" data-target="#removeDepartmentModal">
+                <i class="fas fa-trash-alt"></i> Remove
+              </button>
+            </td>
+          </tr>
+          <tbody>
+            <tr>
+              <td>Cardiology</td>
+              <td>Heart diseases</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>Dermatology</td>
+              <td>Skin disorders</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>Endocrinology</td>
+              <td>Hormonal disorders</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Gastroenterology</td>
+              <td>Digestive system disorders</td>
+              <td>6</td>
+            </tr>
+            <tr>
+              <td>Neurology</td>
+              <td>Brain and nervous system disorders</td>
+              <td>7</td>
+            </tr>
+            <tr>
+              <td>Orthopedics</td>
+              <td>Musculoskeletal system disorders</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <td>Ophthalmology</td>
+              <td>Eye diseases</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>Otolaryngology</td>
+              <td>Ear, nose, and throat disorders</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>Pediatrics</td>
+              <td>Children's health</td>
+              <td>9</td>
+            </tr>
+            <tr>
+              <td>Urology</td>
+              <td>Urinary system disorders</td>
+              <td>3</td>
+            </tr>
+          </tbody>
+          
+        </tbody>
+      </table>
+      <div class="add-department-form">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#addDepartmentModal">
+          <i class="fas fa-plus"></i> Add Department
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Remove Department Modal -->
+  <div class="modal fade" id="removeDepartmentModal" tabindex="-1" role="dialog" aria-labelledby="removeDepartmentModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="removeDepartmentModalLabel">Remove Department</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>Are you sure you want to remove this department?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-danger">Remove</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

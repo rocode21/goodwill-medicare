@@ -1,0 +1,137 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .appointments,
+  .patients {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .appointments {
+    background-color: #f2f2f2;
+    border-right: 1px solid #ccc;
+  }
+  
+  .patients {
+    background-color: #fff;
+  }
+  
+  h2 {
+    color: #333;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .patient-name {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .view-details {
+    text-decoration: none;
+    color: #333;
+    padding: 2px 6px;
+    background-color: #eee;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-details:hover {
+    background-color: #ccc;
+  }
+  
+  #popup {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    background-color: #fff;
+    margin: 10% auto;
+    padding: 20px;
+    width: 60%;
+  }
+  
+  .close {
+    color: #ccc;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  /* New styles for eye-catching colors and hover effects */
+  
+  .appointments {
+    background-color: #ffb6c1;
+    background-image: linear-gradient(to right, #ffb6c1, #87cefa);
+    color: #fff;
+  }
+  
+  .appointments li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+  }
+  
+  .appointments li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .patients {
+    background-color: #87cefa;
+    background-image: linear-gradient(to right, #87cefa, #ffa07a);
+    color: #333;
+  }
+  
+  .patients li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .patients li:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .view-details {
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .view-details:hover {
+    background-color: #000;
+  }
+  

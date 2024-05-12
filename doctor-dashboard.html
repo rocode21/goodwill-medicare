@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Doctor Dashboard</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" type="text/css" href="doctor-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts@3.29.0/dist/apexcharts.min.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Doctor Dashboard</h1>
+  </header>
+
+  <div class="container">
+    <div class="appointments">
+      <h2>Appointments</h2>
+      <ul id="appointmentsList">
+        <!-- Appointments will be dynamically added here -->
+      </ul>
+    </div>
+
+    <div class="patients">
+      <h2>My Patients</h2>
+      <ul id="patientsList">
+        <!-- Patients will be dynamically added here -->
+      </ul>
+    </div>
+  </div>
+
+  <div id="popup" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="popupTitle">Patient Details</h2>
+      <p id="popupContent"></p>
+      <div class="buttons">
+        <button class="btn btn-primary" id="remoteMonitoringBtn">Remote Monitoring</button>
+        <button class="btn btn-info">View Medical Records</button>
+        <button class="btn btn-success">View Medications</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="remoteMonitoringPopup" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="monitoringTitle">Remote Monitoring</h2>
+      <div id="charts"></div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // JavaScript code here
+    var appointmentsList = document.getElementById('appointmentsList');
+    var patientsList = document.getElementById('patientsList');
+    var popup = document.getElementById('popup');
+    var popupTitle = document.getElementById('popupTitle');
+    var popupContent = document.getElementById('popupContent');
+    var closeBtn = document.querySelectorAll('.close');
+    var remoteMonitoringBtn = document.getElementById('remoteMonitoringBtn');
+    var monitoringPopup = document.getElementById('remoteMonitoringPopup');
+    var monitoringTitle = document.getElementById('monitoringTitle');
+    var chartsContainer = document.getElementById('charts');
+
+    // Sample data
+    var appointmentsData = [
+      { date: '2023-06-08', patient: { name: 'John Doe', age: 35, gender: 'Male', contact: '123-456-7890' } },
+      { date: '2023-06-09', patient: { name: 'Jane Smith', age: 45, gender: 'Female', contact: '987-654-3210' } },
+      { date: '2023-06-10', patient: { name: 'Alex Johnson', age: 28, gender: 'Non-Binary', contact: '555-555-5555' } }
+    ];
+
+    // Populate appointments list
+    for (var i = 0; i < appointmentsData.length; i++) {
+      var appointment = appointmentsData[i];
+      var li = document.createElement('li');
+      var dateSpan = document.createElement('span');
+      dateSpan.textContent = 'Date: ' + appointment.date;
+      li.appendChild(dateSpan);
+      var br = document.createElement('br');
+      li.appendChild(br);
+      var patientNameSpan = document.createElement('span');
+      patientNameSpan.textContent = 'Patient: ' + appointment.patient.name;
+      li.appendChild(patientNameSpan);
+      var br2 = document.createElement('br');
+      li.appendChild(br2);
+      var ageSpan = document.createElement('span');
+      ageSpan.textContent = 'Age: ' + appointment.patient.age;
+      li.appendChild(ageSpan);
+      var br3 = document.createElement('br');
+      li.appendChild(br3);
+      var genderSpan = document.createElement('span');
+      genderSpan.textContent = 'Gender: ' + appointment.patient.gender;
+      li.appendChild(genderSpan);
+      var br4 = document.createElement('br');
+      li.appendChild(br4);
+      var contactSpan = document.createElement('span');
+      contactSpan.textContent = 'Contact: ' + appointment.patient.contact;
+      li.appendChild(contactSpan);
+      var br5 = document.createElement('br');
+      li.appendChild(br5);
+      var acceptBtn = document.createElement('button');
+      acceptBtn.textContent = 'Accept Virtual Meeting';
+      acceptBtn.className = 'btn btn-success';
+      li.appendChild(acceptBtn);
+      appointmentsList.appendChild(li);
+    }
+
+    // Populate patients list
+    var patientsData = [
+      { name: 'John Doe', details: 'Remote Monitoring of Patient, View Medical Records, View Medications' },
+      { name: 'Jane Smith', details: 'Remote Monitoring of Patient, View Medical Records, View Medications' }
+    ];
+
+    for (var j = 0; j < patientsData.length; j++) {
+      var patient = patientsData[j];
+      var li = document.createElement('li');
+      var nameSpan = document.createElement('span');
+      nameSpan.className = 'patient-name';
+      nameSpan.textContent = patient.name;
+      li.appendChild(nameSpan);
+      var viewDetailsLink = document.createElement('a');
+      viewDetailsLink.href = '#';
+      viewDetailsLink.className = 'view-details';
+      viewDetailsLink.textContent = 'View Details';
+      viewDetailsLink.addEventListener('click', createPopupHandler(patient));
+      li.appendChild(viewDetailsLink);
+      patientsList.appendChild(li);
+    }
+
+    // Create a popup window with patient details
+    function createPopupHandler(patient) {
+      return function(event) {
+        event.preventDefault();
+        popupTitle.textContent = 'Patient Details: ' + patient.name;
+        popupContent.textContent = 'Age: ' + patient.age + ', Gender: ' + patient.gender + ', Contact: ' + patient.contact;
+        popup.style.display = 'block';
+      }
+    }
+
+    // Close the popup windows
+    closeBtn.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        popup.style.display = 'none';
+        monitoringPopup.style.display = 'none';
+      });
+    });
+
+    // Show remote monitoring popup
+    remoteMonitoringBtn.addEventListener('click', function() {
+      monitoringTitle.textContent = 'Remote Monitoring: ' + popupTitle.textContent.split(':')[1].trim();
+      monitoringPopup.style.display = 'block';
+
+      // Simulate real-time data
+      var heartRateSeries = generateRandomSeries(60, 60, 50, 200);
+      var bloodPressureSeries = generateRandomSeries(60, 60, 70, 200);
+
+      var options = {
+        series: [
+          { name: 'Heart Rate (BPM)', data: heartRateSeries },
+          { name: 'Blood Pressure (mmHg)', data: bloodPressureSeries }
+        ],
+        chart: { type: 'line', height: 350 },
+        xaxis: { type: 'datetime' },
+        yaxis: { title: { text: 'Measurements' } },
+        stroke: { width: 2 },
+        legend: { position: 'top' },
+      };
+
+      var chart = new ApexCharts(chartsContainer, options);
+      chart.render();
+
+      // Simulate real-time updates
+      setInterval(function() {
+        heartRateSeries.shift();
+        bloodPressureSeries.shift();
+        var heartRate = generateRandomValue(60, 200);
+        var bloodPressure = generateRandomValue(70, 200);
+        var timestamp = new Date().getTime();
+        heartRateSeries.push({ x: timestamp, y: heartRate });
+        bloodPressureSeries.push({ x: timestamp, y: bloodPressure });
+        chart.updateSeries([{ data: heartRateSeries }, { data: bloodPressureSeries }]);
+      }, 2000);
+    });
+
+    // Generate random value between min and max
+    function generateRandomValue(min, max) {
+      return Math.floor(Math.random() * (max - min + 1) + min);
+    }
+
+    // Generate random series of values
+    function generateRandomSeries(numPoints, interval, min, max) {
+      var series = [];
+      var currentTime = new Date().getTime();
+
+      for (var i = numPoints - 1; i >= 0; i--) {
+        var timestamp = currentTime - (i * interval * 1000);
+        var value = generateRandomValue(min, max);
+        series.push({ x: timestamp, y: value });
+      }
+
+      return series;
+    }
+  </script>
+</body>
+</html>

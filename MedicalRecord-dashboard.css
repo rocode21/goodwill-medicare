@@ -1,36 +1,74 @@
-/* Custom styles go here */
+/* Custom styles */
 
 .container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  .table {
-    width: 100%;
-  }
-  
-  .table th {
-    font-weight: bold;
-  }
-  
-  .table td,
-  .table th {
-    padding: 8px;
-    text-align: left;
-  }
-  
-  .table-striped tbody tr:nth-of-type(odd) {
-    background-color: #f4f4f4;
-  }
-  
-  .text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
-  
-  .my-4 {
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-  }
-  
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  border-bottom: 1px solid #e0e0e0; /* Light gray border bottom for cells */
+}
+
+.table th {
+  font-weight: bold;
+  text-align: left;
+  background-color: #f8f9fa;
+}
+
+.table-striped tbody tr:nth-of-type(odd) {
+  background-color: #f4f4f4;
+}
+
+.text-3xl {
+  font-size: 2rem;
+  line-height: 1.4;
+  margin-bottom: 20px;
+}
+
+.my-4 {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+
+/* Additional styles for enhanced readability and consistency */
+
+body {
+  font-family: 'Arial', sans-serif; /* Consistent font stack */
+  color: #333; /* Dark text color for better readability */
+  line-height: 1.6; /* Improved line height for better readability */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0; /* Remove default margin for headings */
+}
+
+a {
+  color: #007bff; /* Blue link color */
+  text-decoration: none; /* Remove underline */
+}
+
+a:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.btn:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}

@@ -23,42 +23,43 @@
         <tbody>
             <tr>
                 <td>Painkiller</td>
-                <td>2025-06-01</td>
-                <td><a href="#">View</a></td>
-                <td>£10</td>
-                <td>goodday pharmacy</td>
+                <td>2024-06-01</td>
+                <td><a href="#" onclick="showMedicineInfo('Paracetamol')">View</a></td>
+                <td>10£</td>
+                <td>Pillbox Pharmacy</td>
                 <td><button onclick="buyMedicine('Medicine 1')" class="btn btn-primary">Buy</button></td>
             </tr>
+            
             <tr>
                 <td>Adderall</td>
-                <td>2024-12-31</td>
-                <td><a href="#">View</a></td>
-                <td>£15</td>
-                <td>Happy pharmacy</td>
+                <td>2023-12-31</td>
+                <td><a href="#" onclick="showMedicineInfo('Adderall')">View</a></td>
+                <td>15£</td>
+                <td>MedMart</td>
                 <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
             </tr>
             <tr>
                 <td>Flexon</td>
-                <td>2025-12-31</td>
-                <td><a href="#">View</a></td>
-                <td>£12</td>
-                <td>grandy international hospital</td>
+                <td>2023-12-31</td>
+                <td><a href="#" onclick="showMedicineInfo('Flexon')">View</a></td>
+                <td>12£</td>
+                <td>Health Haven.</td>
                 <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
             </tr>
             <tr>
                 <td>Azithromycin</td>
-                <td>2025-10-31</td>
-                <td><a href="#">View</a></td>
-                <td>£14</td>
-                <td>life clinic</td>
+                <td>2023-10-31</td>
+                <td><a href="#" onclick="showMedicineInfo('Azithromycin')">View</a></td>
+                <td>14£</td>
+                <td>Cure Corner</td>
                 <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
             </tr>
             <tr>
                 <td>Emetrol</td>
-                <td>2025-10-31</td>
-                <td><a href="#">View</a></td>
-                <td>£14</td>
-                <td>home healthcare's</td>
+                <td>2023-10-31</td>
+                <td><a href="#" onclick="showMedicineInfo('Emetrol')">View</a></td>
+                <td>14£</td>
+                <td>Pharma Plus</td>
                 <td><button onclick="buyMedicine('Medicine 2')" class="btn btn-primary">Buy</button></td>
             </tr>
             <!-- Add more medicine rows here -->
@@ -80,6 +81,26 @@
 
             displayCartItems();
         }
+        
+        function showMedicineInfo(medicineName) {
+    // Define information for each medicine
+    const medicineInfo = {
+        'Paracetamol': "Paracetamol is a non-opioid analgesic and antipyretic agent used to treat fever and mild to moderate pain.Swallow paracetamol tablets or capsules with a drink of water. You can take it with or without food.Adults can take two, 500mg tablets, 4 times in 24 hours. You must wait at least 4 hours between doses. Do not take more than 8 tablets in 24 hours.",
+        'Adderall': "Adderall is a medication used to treat attention deficit hyperactivity disorder (ADHD) and narcolepsy.Take this medication by mouth with or without food as directed by your doctor, usually 1 to 3 times a day. The first dose is usually taken when you wake up in the morning. If more doses are prescribed, take them as directed by your doctor, usually 4-6 hours apart. Taking this medication late in the day may cause trouble sleeping (insomnia).",
+        'Flexon': "Flexon Tablet contains two painkiller medicines. They work together to reduce pain, fever, and inflammation. It is used to treat many conditions such as headache, muscle pain, pain during periods, toothache, and joint pain. Flexon Tablet is best taken with food to reduce side effects. The dose and how often you need it will be decided by your doctor. You should take it regularly as advised by your doctor. Medicines used to treat pain are usually best taken at the first sign of pain. It is meant for short-term use only. Consult your doctor if the symptoms persist or worsen or if the medicine is required for use beyond 3 days.",
+        'Azithromycin': "Azithromycin is from a group of medicines called macrolide antibiotics. Macrolide antibiotics work by killing the bacteria that cause the infection.You'll usually take azithromycin once a day. Try to take it at the same time each day.Take azithromycin capsules at least 1 hour before food or 2 hours after eating. You can take tablets or liquid with or without food.For most infections you should feel better within a few days, but it's important to finish your full course of medicine.",
+        'Emetrol': "Emetrol is a medication used to treat nausea and vomiting.Emetrol Liquid treats the source of the problem by calming the stomach muscle contractions that can lead to vomiting and is strong enough for adults and safe for children ages 2 and up. Emetrol Chewables is specially formulated for adults to relief nausea associated with food and drink overindulgence. Both Emetrol products do not contain any antihistamines, alcohol, aspirin, or caffeine."
+        // Add more medicines and their descriptions as needed
+    };
+
+    // Display medicine information based on the selected medicineName
+    if (medicineInfo.hasOwnProperty(medicineName)) {
+        alert(medicineInfo[medicineName]);
+    } else {
+        alert("Information not available for this medicine.");
+    }
+}
+
 
         function getPriceForMedicine(medicineName) {
             if (medicineName === 'Medicine 1') {
@@ -135,7 +156,7 @@
     popup.document.write('<h2>Total Price: £' + totalPrice + '</h2>');
     popup.document.write('<form>');
     popup.document.write('Card Number: <input type="text" name="cardNumber"><br>');
-    popup.document.write('Expiration Date: <input type="text" name="expiry Date"><br>');
+    popup.document.write('Expiration Date: <input type="text" name="expirationDate"><br>');
     popup.document.write('CVV: <input type="text" name="cvv"><br>');
     popup.document.write('Location: <input type="text" name="location"><br>');
     popup.document.write('Contact Number: <input type="text" name="contactNumber"><br>');

@@ -46,43 +46,44 @@
           
             <div class="doctor-list mt-4">
               <div class="doctor-item">
-                <h3>Dr. Parsuram Chhantyal</h3>
+                <h3>Dr. Linden Scarlett</h3>
                 <p>Specialty: Cardiology</p>
                 <p>Ratings: &#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                <p>Healthcare: Everest Hospital</p>
+                <p>Healthcare: Sandwell Hospital</p>
                 <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('scheduled')">Virtual Appointment</button>
               <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('emergency')">Emergency Appointment</button>
               </div>
               <div class="doctor-item">
-                <h3>Dr. Hermit Carpanter</h3>
+                <h3>Dr. Josh Cameroon</h3>
                 <p>Specialty: Dermatology</p>
                 <p>Ratings: &#9733;&#9733;&#9733;&#9733;&#9733;</p>
-                <p>Healthcare: Hello Clinic</p>
+                <p>Healthcare: Cleveland Clinic</p>
                 <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('scheduled')">Virtual Appointment</button>
               <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('emergency')">Emergency Appointment</button>
               </div>
               <!-- Repeat doctor-item div for each doctor -->
               <div class="doctor-item">
-                <h3>Dr. Jonnas Dias </h3>
+                <h3>Dr. Indiana Jones
+                </h3>
                 <p>Specialty: Stomach and Digestive system</p>
                 <p>Ratings: &#9733;&#9733;&#9733;&#9733;&#9733;</p>
-                <p>Healthcare: Happy Medical Center</p>
+                <p>Healthcare: Coseley Medical Center</p>
                 <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('scheduled')">Virtual Appointment</button>
               <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('emergency')">Emergency Appointment</button>
               </div>
               <div class="doctor-item">
-                <h3>Dr. Balen shah </h3>
+                <h3>Dr. Anne Marie</h3>
                 <p>Specialty: Neurology</p>
                 <p>Ratings: &#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                <p>Healthcare: kathmandu City Hospital</p>
+                <p>Healthcare: Mayo Clinic</p>
                 <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('scheduled')">Virtual Appointment</button>
               <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('emergency')">Emergency Appointment</button>
               </div>
               <div class="doctor-item">
-                <h3>Dr. K.P. sharma Oli</h3>
-                <p>Specialty: Cardiology</p>
+                <h3>Dr. Tom Hanks</h3>
+                <p>Specialty: Heart</p>
                 <p>Ratings: &#9733;&#9733;&#9733;&#9733;&#9734;</p>
-                <p>Healthcare: Funtu City Hospital</p>
+                <p>Healthcare: Sully Hospital</p>
                 <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('scheduled')">Virtual Appointment</button>
               <button class="btn btn-primary virtual-appointment-button" onclick="showAppointmentPopup('emergency')">Emergency Appointment</button>
               </div>
@@ -95,10 +96,12 @@
     <!-- Appointment Popup -->
     <div class="popup" id="appointmentPopup">
       <div class="popup-content">
+         <!-- Close Button -->
+       <button class="close-btn" onclick="closePopup('appointmentPopup')">X</button>
         <h2 id="appointmentType"></h2>
         <form id="appointmentForm">
           <div class="form-group">
-            <label for="paymentAmount">Payment Amount: £100</label>
+            <label for="paymentAmount">Payment Amount: $50</label>
           </div>
           <div class="form-group">
             <label for="paymentMethod">Payment Method:</label>
@@ -129,6 +132,7 @@
     <!-- Emergency Appointment Popup -->
     <div class="popup" id="emergencyPopup" style="display: none;">
       <div class="popup-content">
+        <button class="close-btn" onclick="closePopup('emergencyPopup')">X</button>
         <h2>Emergency Appointment</h2>
         <button onclick="openCamera()">Open Camera</button>
       </div>
@@ -154,6 +158,12 @@
           popup.style.display = 'block';
         }
       }
+      function closePopup(popupId) {
+  var popup = document.getElementById(popupId);
+  if (popup) {
+    popup.style.display = 'none'; // Hide the popup
+  }
+}
 
     
         function openCamera() {
